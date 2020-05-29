@@ -8,12 +8,16 @@ module.exports = app => {
 		"/auth/google/callback",
 		passport.authenticate("google"),
 		(req, res) => {
-			res.redirect("/api/getUser");
+			res.redirect("/api/current_user");
 		},
 	);
 
-	app.get("/api/getUser", (req, res) => {
-		res.send(req.user);
+	app.get("/api/current_user", (req, res) => {
+		if (req.user) {
+			res.send(req.user);
+		} else {
+			res.status(401).send("User is not registered");
+		}
 	});
 
 	app.get("/api/logout", (req, res) => {

@@ -7,6 +7,7 @@ const keys = require("./config/keys");
 
 // modellar
 require("./models/User");
+require("./models/Essay");
 // servicelar
 require("./services/passport");
 
@@ -39,6 +40,7 @@ app.use(passport.session());
 // routelar
 require("./routes/authRoutes")(app);
 require("./routes/userRoutes")(app);
+require("./routes/essayRoutes")(app);
 // production un build ni uzatish
 
 app.get("/", (req, res) => {

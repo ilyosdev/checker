@@ -9,7 +9,8 @@ const userSchema = Schema({
 	city: Number,
 	role: Number,
 	balance: Number,
-	username: String,
+	created_at: { type: Date, default: Date.now },
+	// username: String,
 });
 
 mongoose.model("User", userSchema);
